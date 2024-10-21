@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3</title>
+    <style>
+        /* Ensure full viewport width and height */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container for the 6 images */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(3, 4in); /* 3 images horizontally, each 3 inches wide */
+            grid-template-rows: repeat(2, 4in);    /* 2 images vertically, each 3 inches tall */
+            gap: 10px; /* Optional gap between images */
+        }
+
+        /* Style for each image */
+        .image-container img {
+            width: 4in;
+            height: 4in;
+            object-fit: cover; /* Ensures the image covers the entire square without distortion */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image-container">
+
+        <img src="1.png" alt="Image 2">
+        <img src="2.png" alt="Image 3">
+        <img src="3.png" alt="Image 4">
+        <img src="4.png" alt="Image 5">
+        <img src="5.png" alt="Image 6">
+        <img src="6.png" alt="Image 7">
+</body>
+</html>
