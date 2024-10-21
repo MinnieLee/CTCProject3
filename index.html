@@ -18,23 +18,46 @@
        }
 
        .video-container {
+           position: relative;
            display: grid;
-           grid-template-columns: repeat(3, 4in); 
-           grid-template-rows: repeat(2, 4in);  
-           gap: 10px; 
+           grid-template-columns: repeat(3, 4.3in); 
+           grid-template-rows: repeat(2, 4.3in);  
+           gap: 0.8in 1in;
+           margin-top: 1in;
        }
 
        .video-container video {
-           width: 4in;
-           height: 4in;
+           width: 4.3in;
+           height: 4.3in;
            object-fit: cover; 
            cursor: url('cursor.png'), auto;  
        }
+
+       
+       .black-bars {
+           position: absolute;
+           top: -0.1in; 
+           display: flex;
+           gap: 1in; 
+       }
+
+       .black-bars div {
+           width: 4.3in;
+           height: 0.1in;
+           background-color: black;
+       }
+
    </style>
 </head>
 
 <body>
    <div class="video-container">
+       <div class="black-bars">
+           <div></div> <
+           <div></div> 
+           <div></div> 
+       </div>
+
        <video src="Room1.mp4" muted></video>
        <video src="Room2.mp4" muted></video>
        <video src="Room3.mp4" muted></video>
@@ -78,6 +101,9 @@
    </script>
 </body>
 </html>
+
+
+
 
 
 
