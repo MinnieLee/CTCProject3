@@ -16,31 +16,60 @@
             align-items: center;
         }
 
-        /* Container for the 6 images */
-        .image-container {
+        /* Container for the 6 videos */
+        .video-container {
             display: grid;
-            grid-template-columns: repeat(3, 4in); /* 3 images horizontally, each 3 inches wide */
-            grid-template-rows: repeat(2, 4in);    /* 2 images vertically, each 3 inches tall */
-            gap: 10px; /* Optional gap between images */
+            grid-template-columns: repeat(3, 4in); /* 3 videos horizontally */
+            grid-template-rows: repeat(2, 4in);    /* 2 videos vertically */
+            gap: 10px; /* Optional gap between videos */
         }
 
-        /* Style for each image */
-        .image-container img {
+        /* Style for each video */
+        .video-container video {
             width: 4in;
             height: 4in;
-            object-fit: cover; /* Ensures the image covers the entire square without distortion */
+            object-fit: cover; /* Ensures the video covers the entire square without distortion */
+            cursor: pointer;   /* Changes cursor to pointer when hovering over the video */
         }
     </style>
 </head>
 
 <body>
-    <div class="image-container">
+    <div class="video-container">
+        <!-- Video 1 -->
+        <video src="Room1.mp4" muted></video>
+        <!-- Video 2 -->
+        <video src="Room2.mp4" muted></video>
+        <!-- Video 3 -->
+        <video src="Room3.mp4" muted></video>
+        <!-- Video 4 -->
+        <video src="Room4.mp4" muted></video>
+        <!-- Video 5 -->
+        <video src="Room5.mp4" muted></video>
+        <!-- Video 6 -->
+        <video src="Room6.mp4" muted></video>
+    </div>
 
-        <img src="1.png" alt="Image 2">
-        <img src="2.png" alt="Image 3">
-        <img src="3.png" alt="Image 4">
-        <img src="4.png" alt="Image 5">
-        <img src="5.png" alt="Image 6">
-        <img src="6.png" alt="Image 7">
+    <script>
+        // Select all video elements
+        const videos = document.querySelectorAll('.video-container video');
+
+        // Function to play the video on hover
+        function playVideo(event) {
+            event.target.play();
+        }
+
+        // Function to pause the video when hover ends
+        function pauseVideo(event) {
+            event.target.pause();
+            event.target.currentTime = 0; // Reset to the beginning
+        }
+
+        // Add hover event listeners to each video
+        videos.forEach(video => {
+            video.addEventListener('mouseenter', playVideo);  // Play video on hover
+            video.addEventListener('mouseleave', pauseVideo); // Pause video when hover ends
+        });
+    </script>
 </body>
 </html>
