@@ -23,7 +23,7 @@
            grid-template-columns: repeat(3, 4.3in); 
            grid-template-rows: repeat(2, 4.3in);  
            gap: 0.8in 1in;
-           margin-top: 1in;
+           margin-top: 1in; /* Adjusted gap: 0.5in vertical, 1in horizontal */
        }
 
        .video-container video {
@@ -34,11 +34,12 @@
        }
 
        
+       /* Black bars on top of each of the top three videos */
        .black-bars {
            position: absolute;
-           top: -0.1in; 
+           top: -0.1in; /* Align with the top of the first row */
            display: flex;
-           gap: 1in; 
+           gap: 1in; /* Match the gap of the videos */
        }
 
        .black-bars div {
@@ -53,9 +54,9 @@
 <body>
    <div class="video-container">
        <div class="black-bars">
-           <div></div> <
-           <div></div> 
-           <div></div> 
+           <div></div> <!-- First black rectangle -->
+           <div></div> <!-- Second black rectangle -->
+           <div></div> <!-- Third black rectangle -->
        </div>
 
        <video src="Room1.mp4" muted></video>
