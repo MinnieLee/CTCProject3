@@ -1,76 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 3</title>
-    <style>
-        /* Ensure full viewport width and height */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #40586f;
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Project 3</title>
+   <style>
+       body, html {
+           margin: 0;
+           padding: 0;
+           width: 100%;
+           height: 100%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background-color: #40586f;
+       }
 
-        /* Container for the 6 videos */
-        .video-container {
-            display: grid;
-            grid-template-columns: repeat(3, 4in); /* 3 videos horizontally */
-            grid-template-rows: repeat(2, 4in);    /* 2 videos vertically */
-            gap: 10px; /* Optional gap between videos */
-        }
+       .video-container {
+           display: grid;
+           grid-template-columns: repeat(3, 4in); 
+           grid-template-rows: repeat(2, 4in);  
+           gap: 10px; 
+       }
 
-        /* Style for each video */
-        .video-container video {
-            width: 4in;
-            height: 4in;
-            object-fit: cover; /* Ensures the video covers the entire square without distortion */
-            cursor: pointer;   /* Changes cursor to pointer when hovering over the video */
-        }
-    </style>
+       .video-container video {
+           width: 4in;
+           height: 4in;
+           object-fit: cover; 
+           cursor: pointer;   
+       }
+   </style>
 </head>
 
 <body>
-    <div class="video-container">
-        <!-- Video 1 -->
-        <video src="Room1.mp4" muted></video>
-        <!-- Video 2 -->
-        <video src="Room2.mp4" muted></video>
-        <!-- Video 3 -->
-        <video src="Room3.mp4" muted></video>
-        <!-- Video 4 -->
-        <video src="Room4.mp4" muted></video>
-        <!-- Video 5 -->
-        <video src="Room5.mp4" muted></video>
-        <!-- Video 6 -->
-        <video src="Room6.mp4" muted></video>
-    </div>
+   <div class="video-container">
+       <video src="Room1.mp4" muted></video>
+       <video src="Room2.mp4" muted></video>
+       <video src="Room3.mp4" muted></video>
+       <video src="Room4.mp4" muted></video>
+       <video src="Room5.mp4" muted></video>
+       <video src="Room6.mp4" muted></video>
+   </div>
 
-    <script>
-        // Select all video elements
-        const videos = document.querySelectorAll('.video-container video');
+   <!-- Audio element to play the song -->
+   <audio id="hover-sound" src="song.mp3" preload="auto"></audio>
 
-        // Function to play the video on hover
-        function playVideo(event) {
-            event.target.play();
-        }
+   <script>
+       const videos = document.querySelectorAll('.video-container video');
+       const audioPlayer = document.getElementById('hover-sound'); 
 
-        // Function to pause the video when hover ends
-        function pauseVideo(event) {
-            event.target.pause();
-            event.target.currentTime = 0; // Reset to the beginning
-        }
+       // Function to toggle audio playback on click
+       function toggleAudio() {
+           if (audioPlayer.paused) {
+               audioPlayer.currentTime = 0; // Reset to the beginning
+               audioPlayer.play().catch(error => {
+                   console.error("Audio playback failed:", error);
+               });
+           } else {
+               audioPlayer.pause();
+           }
+       }
 
-        // Add hover event listeners to each video
-        videos.forEach(video => {
-            video.addEventListener('mouseenter', playVideo);  // Play video on hover
-            video.addEventListener('mouseleave', pauseVideo); // Pause video when hover ends
-        });
-    </script>
+       // Function to play the video on hover
+       function playVideo(event) {
+           event.target.play();
+       }
+
+       // Function to pause the video on hover out
+       function pauseVideo(event) {
+           event.target.pause();
+           event.target.currentTime = 0; // Reset to the beginning
+       }
+
+       // Add hover and click event listeners to each video
+       videos.forEach(video => {
+           // Hover effect: play video on hover, pause on hover out
+           video.addEventListener('mouseenter', playVideo);
+           video.addEventListener('mouseleave', pauseVideo);
+
+           // Click effect: toggle audio on click
+           video.addEventListener('click', toggleAudio);
+       });
+   </script>
 </body>
 </html>
+
+
+
+
+
+
