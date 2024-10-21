@@ -43,17 +43,15 @@
        <video src="Room6.mp4" muted></video>
    </div>
 
-   <!-- Audio element to play the song -->
    <audio id="hover-sound" src="song.mp3" preload="auto"></audio>
 
    <script>
        const videos = document.querySelectorAll('.video-container video');
        const audioPlayer = document.getElementById('hover-sound'); 
-
-       // Function to toggle audio playback on click
+ 
        function toggleAudio() {
            if (audioPlayer.paused) {
-               audioPlayer.currentTime = 0; // Reset to the beginning
+               audioPlayer.currentTime = 0; 
                audioPlayer.play().catch(error => {
                    console.error("Audio playback failed:", error);
                });
@@ -62,24 +60,19 @@
            }
        }
 
-       // Function to play the video on hover
        function playVideo(event) {
            event.target.play();
        }
 
-       // Function to pause the video on hover out
        function pauseVideo(event) {
            event.target.pause();
-           event.target.currentTime = 0; // Reset to the beginning
+           event.target.currentTime = 0; 
        }
 
-       // Add hover and click event listeners to each video
        videos.forEach(video => {
-           // Hover effect: play video on hover, pause on hover out
            video.addEventListener('mouseenter', playVideo);
            video.addEventListener('mouseleave', pauseVideo);
 
-           // Click effect: toggle audio on click
            video.addEventListener('click', toggleAudio);
        });
    </script>
